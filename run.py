@@ -1,5 +1,5 @@
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import threading
 from bot.argparser import args
 from bot.logger import logger, set_logger_verbosity, quiesce_logger
@@ -26,7 +26,7 @@ def init_mastodon():
     for notification in notifications:
         if db_r.get(str(notification["id"])):
             continue
-        if notification['created_at'] < datetime.now() - timedelta(minutes=3):
+        if notification['created_at'] < datetime.now(timezone.utc) - timedelta(minutes=3):
             logger.debug("Init notification is more than 3 hours old. Ignoring")
             continue
         notification_handler = MentionHandler(notification)
