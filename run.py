@@ -26,7 +26,7 @@ def init_mastodon():
     for notification in notifications:
         if db_r.get(str(notification["id"])):
             continue
-        if notification['created_at'] < datetime.now() - timedelta(mins=3):
+        if notification['created_at'] < datetime.now() - timedelta(minutes=3):
             logger.debug("Init notification is more than 3 hours old. Ignoring")
             continue
         notification_handler = MentionHandler(notification)
