@@ -25,8 +25,6 @@ def init_mastodon():
     for notification in notifications:
         if db_r.get(str(notification["id"])):
             continue
-        logger.info(notification['created_at'])
-        continue
         notification_handler = MentionHandler(notification)
         thread = threading.Thread(target=notification_handler.handle_notification, args=())
         thread.start()
