@@ -39,8 +39,6 @@ class MentionHandler:
         # pp.pprint(notification)
         self.status = JobStatus.WORKING
         logger.debug(f"Handling notification {self.notification_id} as a mention")
-        logger.debug(self.notification['created_at'])
-        logger.debug(type(self.notification['created_at']))
         # logger.debug([self.notification_id, last_parsed_notification, self.notification_id < last_parsed_notification])
         try:
             styling = Styling(self.mention_content, self.acct)
