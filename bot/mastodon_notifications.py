@@ -116,7 +116,7 @@ class MentionHandler:
                     to_status=self.incoming_status,
                     status=reply_text,
                     media_ids=media_dicts,
-                    spoiler_text="AI Generated Images",
+                    # spoiler_text="AI Generated Images",
                     visibility=visibility,
                 )
                 if len(media_dicts) > 1:
